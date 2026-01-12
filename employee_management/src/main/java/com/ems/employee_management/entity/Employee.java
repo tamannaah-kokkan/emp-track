@@ -15,10 +15,10 @@ public class Employee {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id; //Database primary key
 	
-	private int employeeId; //eg: EMP101
+	private long employeeId; //eg: EMP101
 	private String name;
 	private String email;
-	private int phone;
+	private long phone;
 	private String department;
 	private String designation;
 	private double salary;
