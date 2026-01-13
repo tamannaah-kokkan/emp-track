@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ems.employee_management.entity.Employee;
 import com.ems.employee_management.service.EmployeeService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
@@ -26,7 +28,7 @@ public class EmployeeController {
 	
 	//add emp
 	@PostMapping
-	public Employee addEmployee(@RequestBody Employee employee) {
+	public Employee addEmployee(@Valid @RequestBody Employee employee) {
 		return employeeService.addEmployee(employee);
 		
 	}
@@ -48,7 +50,7 @@ public class EmployeeController {
 	
 	//update the employee
 	@PutMapping("/{id}")
-	public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+	public Employee updateEmployee(@PathVariable Long id,@Valid @RequestBody Employee employee) {
 		return employeeService.updateEmployee(id, employee);
 	}
 	
