@@ -1,5 +1,6 @@
 package com.ems.employee_management.service;
 import com.ems.employee_management.entity.Employee;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.ems.employee_management.repository.EmployeeRepository;
 
+import org.springframework.transaction.annotation.Transactional;
 @Service
 public class EmployeeService {
 	
@@ -37,6 +39,7 @@ public class EmployeeService {
 	
 	
 	//update employee
+	@Transactional
 	public Employee updateEmployee(Long id, Employee updatedEmp) {
 		
 		Employee existing = employeeRepository.findById(id).orElseThrow(()-> new RuntimeException("Employee Not Found!!!"));
@@ -50,7 +53,7 @@ public class EmployeeService {
 		existing.setPhone(updatedEmp.getPhone());
 		existing.setSalary(updatedEmp.getSalary());
 		
-		employeeRepository.save(existing);
+//		employeeRepository.save(existing);
 		return existing;
 	}
 	

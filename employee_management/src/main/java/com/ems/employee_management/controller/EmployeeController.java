@@ -2,6 +2,7 @@ package com.ems.employee_management.controller;
 
 import java.util.List;
 
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,17 +48,17 @@ public class EmployeeController {
 		return employeeService.getEmployeeById(id);	
 	}
 	
-//	
-//	//update the employee
-//	@PutMapping("/{id}")
-//	public Employee updateEmployee(@PathVariable Long id,@Valid @RequestBody Employee employee) {
-//		return employeeService.updateEmployee(id, employee);
-//	}
+	
+	//update the employee
+	@PutMapping("/{id}")
+	public Employee updateEmployee(@PathVariable Long id,@Valid @RequestBody Employee employee) {
+		return employeeService.updateEmployee(id, employee);
+	}
 	
 	
 	//delete the employee
 	@DeleteMapping("/{id}")
 	public  void deleteEmployee(@PathVariable Long id) {
-		
+		employeeService.deleteEmployee(id);	
 	}
 }
