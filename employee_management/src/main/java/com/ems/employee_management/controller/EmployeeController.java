@@ -47,17 +47,17 @@ public class EmployeeController {
 		return employeeService.getEmployeeById(id);	
 	}
 	
-	
-	//update the employee
-	@PutMapping("/{id}")
-	public Employee updateEmployee(@PathVariable Long id,@Valid @RequestBody Employee employee) {
-		return employeeService.updateEmployee(id, employee);
-	}
+//	
+//	//update the employee
+//	@PutMapping("/{id}")
+//	public Employee updateEmployee(@PathVariable Long id,@Valid @RequestBody Employee employee) {
+//		return employeeService.updateEmployee(id, employee);
+//	}
 	
 	
 	//delete the employee
 	@DeleteMapping("/{id}")
-	public String deleteEmployee(@PathVariable Long id) {
-		return employeeService.deleteEmployee(id);
+	public  void deleteEmployee(@PathVariable Long id) {
+		
 	}
 }
