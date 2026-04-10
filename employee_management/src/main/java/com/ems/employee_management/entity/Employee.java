@@ -1,6 +1,8 @@
 package com.ems.employee_management.entity;
 
 import java.time.LocalDate;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,39 +13,59 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Data //used to add getters and setters automatically using lombok dependency
-public class Employee {
+public class Employee {	
 
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.AUTO)
+//	private Long id; //Database primary key
+//	
+//	private long employeeId; //eg: EMP101
+//	@NotBlank(message="Name is mandatory")
+//	private String name;
+//	
+//	@Email(message="Email should be valid")
+//	private String email;
+//	
+//	@NotBlank(message = "Phone is mandatory")
+//	@Pattern(regexp = "^[0-9]{10}$", message = "Phone must be exactly 10 digits")	
+//	private String phone;
+//	
+//    @NotBlank(message = "Department is mandatory")
+//	private String department;
+//    
+//
+//    @NotBlank(message = "Designation is mandatory")
+//	private String designation;
+//    
+//    @Positive(message="Salary must be positive")
+//	private double salary;
+//    
+//    @NotNull(message = "Date of joining is mandatory")
+//	private LocalDate dateOfJoining;
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id; //Database primary key
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	 private Long id;
 	
-	private long employeeId; //eg: EMP101
-	@NotBlank(message="Name is mandatory")
-	private String name;
+	@Column(name="first_name")
+	@NotBlank(message ="First name is manadatory")
+	 private String firstName;
 	
-	@Email(message="Email should be valid")
-	private String email;
+	@Column(name="last_name")
+	@NotBlank(message ="First name is manadatory")
+	 private String lastName;
 	
-	@NotBlank(message = "Phone is mandatory")
-	@Pattern(regexp = "^[0-9]{10}$", message = "Phone must be exactly 10 digits")	
-	private String phone;
-	
-    @NotBlank(message = "Department is mandatory")
-	private String department;
-    
-
-    @NotBlank(message = "Designation is mandatory")
-	private String designation;
-    
-    @Positive(message="Salary must be positive")
-	private double salary;
-    
-    @NotNull(message = "Date of joining is mandatory")
-	private LocalDate dateOfJoining;
+	@Column(name= "email_id", nullable = false, unique = true)
+	@Email(message="Email should be valid!")
+	 private String email;
 	
 }

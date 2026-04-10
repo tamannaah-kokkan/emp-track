@@ -45,13 +45,14 @@ public class EmployeeService {
 		Employee existing = employeeRepository.findById(id).orElseThrow(()-> new RuntimeException("Employee Not Found!!!"));
 		//not used existsById() as we require the employee object not just the boolean value provided by this method abt the existence of the object.
 		
-		existing.setName(updatedEmp.getName());
+		existing.setFirstName(updatedEmp.getFirstName());
 		existing.setEmail(updatedEmp.getEmail());
-		existing.setDateOfJoining(updatedEmp.getDateOfJoining());
-		existing.setDepartment(updatedEmp.getDepartment());
-		existing.setDesignation(updatedEmp.getDesignation());
-		existing.setPhone(updatedEmp.getPhone());
-		existing.setSalary(updatedEmp.getSalary());
+		existing.setLastName(updatedEmp.getLastName());
+//		existing.setDateOfJoining(updatedEmp.getDateOfJoining());
+//		existing.setDepartment(updatedEmp.getDepartment());
+//		existing.setDesignation(updatedEmp.getDesignation());
+//		existing.setPhone(updatedEmp.getPhone());
+//		existing.setSalary(updatedEmp.getSalary());
 		
 //		employeeRepository.save(existing);
 		return existing;

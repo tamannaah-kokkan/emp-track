@@ -1,4 +1,4 @@
-package com.ems.employee_management.enums.Role;
+package com.ems.employee_management.enums;
 
 public enum Role {
 	ADMIN,
