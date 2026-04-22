@@ -1,42 +1,16 @@
-# EmployeeTrack – Employee Management System
+# React + Vite
 
-## 📌 Overview
-EmployeeTrack is a full-stack application designed to manage employee data using a Spring Boot backend and a React.js frontend (under development). The backend currently exposes RESTful APIs following a layered 3-tier architecture.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 🚀 Tech Stack
-### Backend
-- Java
-- Spring Boot
-- REST APIs
-- MySQL
-- Maven
+Currently, two official plugins are available:
 
-### Frontend (In Progress)
-- React.js
-- HTML5
-- CSS3
-- JavaScript
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## ✅ Backend Features Implemented
-- Create Employee
-- Get All Employees
-- Get Employee By ID
-- Update Employee
-- Delete Employee
-- Layered Architecture (Controller → Service → Repository)
+## React Compiler
 
-## 🏗 Architecture
-The backend follows a structured 3-tier architecture:
-- Controller Layer – Handles HTTP requests
-- Service Layer – Business logic processing
-- Repository Layer – Database interaction
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## 🗄 Database
-MySQL relational schema used to store structured employee data.
+## Expanding the ESLint configuration
 
-## 📌 Project Status
-- Backend APIs implemented and tested.
-- Frontend integration using React.js is under development.
-- Validation and global exception handling improvements planned.
-
-
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
