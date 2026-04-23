@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* Reset only what is safe */
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+/* Apply styles ONLY to body */
+/* body {
+  color: rgb(70, 66, 66);
+  background-color: rgb(208, 210, 226);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} */
