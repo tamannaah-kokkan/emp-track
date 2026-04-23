@@ -1,31 +1,16 @@
+import { useEffect, useState } from "react"
+import { listEmployees } from "../services/EmployeeService";
+
 export const ListEmployee = () =>{
 
-    const dummyData = [
-        {
-            "id" : 1,
-            "firstName" : "Tamannaah",
-            "lastName" : "Kokkan",
-            "email" : "tamannaah1302@gmail.com"
-        },
-        {
-            "id" : 2,
-            "firstName" : "Smriti",
-            "lastName" : "Khandagale",
-            "email" : "smriti@gmail.com"
-        },
-        {
-            "id" : 3,
-            "firstName" : "Rohan",
-            "lastName" : "Singh",
-            "email" : "rohan@gmail.com"
-        },
-        {
-            "id" : 4,
-            "firstName" : "Stephen",
-            "lastName" : "David",
-            "email" : "stephen@gmail.com"
-        }
-    ]
+    const [employees,setEmployees] = useState([]);
+
+    useEffect(() => {
+        listEmployees().then((response) => {
+            setEmployees(response.data);
+        }).catch(e => console.error(e));
+    },[])
+
     return ( 
         <div className="p-6 min-h-screen"> {/* it is approx 24 px.*/}
             <h1 className="text-2xl text-blue-100 font-bold mb-4 p-6 border-4 text-center bg-cyan-700  border-b-cyan-800">List Of Employees</h1>
@@ -40,7 +25,7 @@ export const ListEmployee = () =>{
                 </tr>
                 </thead>
                 <tbody>
-                    {dummyData.map(employee => (
+                    {employees.map(employee => (
                         <tr key={employee.id} className="hover:bg-cyan-50">
                             <td className="border border-cyan-700 px-4 py-2">{employee.id}</td>
                             <td className="border  border-cyan-700 px-4 py-2">{employee.firstName}</td>
