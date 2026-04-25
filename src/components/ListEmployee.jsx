@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react"
 import { listEmployees } from "../services/EmployeeService";
+// import AddEmployee from "./AddEmployee";
+import { useNavigate } from "react-router-dom";
 
 export const ListEmployee = () =>{
 
     const [employees,setEmployees] = useState([]);
+
+    const navigator = useNavigate();
 
     useEffect(() => {
         listEmployees().then((response) => {
@@ -11,9 +15,16 @@ export const ListEmployee = () =>{
         }).catch(e => console.error(e));
     },[])
 
+    const addNewEmployee = () =>{
+        navigator('/add-employee')
+    }
+
     return ( 
         <div className="p-6 min-h-screen"> {/* it is approx 24 px.*/}
             <h1 className="text-2xl text-blue-100 font-bold mb-4 p-6 border-4 text-center bg-cyan-700  border-b-cyan-800">List Of Employees</h1>
+           {/* Add employee button  */}
+            <button onClick={addNewEmployee}
+      className="bg-green-600 p-2.5 text-white font-bold rounded-md shadow-gray-600 shadow-md cursor-pointer ">Add Employee</button>
             <table className="mt-4 w-full border-3 border-gray-300 border-collapse rounded"> 
 
                 <thead className=" bg-cyan-600 text-white">
