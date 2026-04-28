@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { listEmployees } from "../services/EmployeeService";
+import { deleteEmployee, listEmployees } from "../services/EmployeeService";
 // import AddEmployee from "./AddEmployee";
 import { useNavigate } from "react-router-dom";
 
@@ -9,51 +9,79 @@ export const ListEmployee = () =>{
 
     const navigator = useNavigate();
 
-    useEffect(() => {
+    //get all employees function
+     const getAllEmployees = () => {
         listEmployees().then((response) => {
             setEmployees(response.data);
         }).catch(e => console.error(e));
+    }
+
+    useEffect(() => {
+        getAllEmployees()
     },[])
 
+    //adding a new employee navigator
     const addNewEmployee = () =>{
         navigator('/add-employee')
     }
 
+    //upating emp navigator
     const updateEmployee = (id) =>{
         navigator(`/update-employee/${id}`);
     }
 
-    return ( 
-        <div className="p-6 min-h-screen"> {/* it is approx 24 px.*/}
-            <h1 className="text-2xl text-blue-100 font-bold mb-4 p-6 border-4 text-center bg-cyan-700  border-b-cyan-800">List Of Employees</h1>
-           {/* Add employee button  */}
-            <button onClick={addNewEmployee}
-      className="bg-green-600 p-2.5 text-white font-bold rounded-md shadow-gray-600 shadow-md cursor-pointer ">Add Employee</button>
-            <table className="mt-4 w-full border-3 border-gray-300 border-collapse rounded"> 
+    //deleting the employee
+    const removeEmployee = (id) => {
+        console.log(`Employee removed successfully ${id}`);
+        deleteEmployee(id).then(()=> {
+            setEmployees(prev => 
+                prev.filter(emp => emp.id !== id)
+            );
+        }).catch((err) => {
+            console.error(err);
+        })
+    }
 
-                <thead className=" bg-cyan-600 text-white">
+    return ( 
+        <div className="max-w-6xl mx-auto px-6 py-6"> {/* it is approx 24 px.*/}
+<h1 className="text-3xl font-bold text-gray-800 mb-6">
+  Employee Management
+</h1>           {/* Add employee button  */}
+            <button onClick={addNewEmployee}
+      className="mb-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition"
+>+ Add Employee</button>
+
+<div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">            <table className="w-full text-sm"> 
+
+                <thead className=" bg-gray-50 text-gray-600 uppercase text-xs">
                 <tr>
-                    <th className="border  border-cyan-700 px-4 py-2 text-left">Employee Id</th>
-                    <th className="border  border-cyan-700 px-4 py-2 text-left">Employee FirstName</th>
-                    <th className="border border-cyan-700 px-4 py-2 text-left">Employee LastName</th>
-                    <th className="border  border-cyan-700 px-4 py-2 text-left">Employee Email</th>
-                    <th className="border  border-cyan-700 px-4 py-2 text-left">Actions</th>
+                    <th className="px-4 py-3 text-left text-gray-600 font-medium">Employee Id</th>
+                    <th className="px-4 py-3 text-left text-gray-600 font-medium">Employee FirstName</th>
+                    <th className="px-4 py-3 text-left text-gray-600 font-medium">Employee LastName</th>
+                    <th className="px-4 py-3 text-left text-gray-600 font-medium">Employee Email</th>
+                    <th className="px-4 py-3 text-left text-gray-600 font-medium">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                     {employees.map(employee => (
-                        <tr key={employee.id} className="hover:bg-cyan-50">
-                            <td className="border border-cyan-700 px-4 py-2">{employee.id}</td>
-                            <td className="border  border-cyan-700 px-4 py-2">{employee.firstName}</td>
-                            <td  className="border  border-cyan-700 px-4 py-2">{employee.lastName}</td>
-                            <td  className="border  border-cyan-700 px-4 py-2">{employee.email}</td>
-                            <td  className="border  border-cyan-700 px-4 py-2">
-                                <div className = "flex justify-center">
+                        <tr key={employee.id} className="border-b hover:bg-gray-50 transition">
+                            <td className="px-4 py-3 text-gray-700">{employee.id}</td>
+                            <td className="px-4 py-3 text-gray-700">{employee.firstName}</td>
+                            <td className="px-4 py-3 text-gray-700">{employee.lastName}</td>
+                            <td className="px-4 py-3 text-gray-700">{employee.email}</td>
+                            <td className="px-4 py-3 text-gray-700">
+                                <div className = "flex justify-start gap-2">
                                 <button 
                                 type="submit" 
-                                className="bg-cyan-900 p-2.5 w-24 text-white font-bold rounded-md cursor-pointer hover:bg-cyan-950"
+                                className="px-3 py-1 text-sm rounded-md bg-blue-300 font-medium text-blue-900 hover:bg-blue-200 transition"
                                 onClick={() => updateEmployee(employee.id)}>
                                     Update
+                                </button>
+                                <button 
+                                type="submit" 
+                                className="bg-red-300 px-3 py-1 text-red-900 rounded text-sm font-medium cursor-pointer hover:bg-red-200"
+                                onClick={() => removeEmployee(employee.id)}>
+                                    Delete
                                 </button>
                                 </div>
                             </td>
@@ -62,7 +90,7 @@ export const ListEmployee = () =>{
                     ))}
                 </tbody>
             </table>
-           
+           </div>
         </div>
     )
 } 
