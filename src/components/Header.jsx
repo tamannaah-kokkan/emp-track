@@ -1,11 +1,11 @@
 export const Header = () => {
     return (
         <>
-           <header className = "bg-gradient-to-r from-blue-800 to-purple-600 text-white text-lg shadow-lg shadow-gray-400 p-4 mb-4">
-            <div className="max-w-7xl">
-                <div className = "max-w-55 ">
-                    <h1 className="text-3xl font-bold">EmployeeTrack</h1>
-                <p style={{ fontSize: '12px'}} className="text-sm text-gray-300 font-extralight italic">Employee Management System</p>
+           <header className = "bg-white border-b border-gray-200">
+            <div className="max-w-6xl mx-auto px-6 py-4">
+                <div>
+                    <h1 className="text-3xl font-semibold text-gray-800">EmployeeTrack</h1>
+                <p className="text-sm text-gray-500">Employee Management System</p>
                 </div>
             </div>
               

@@ -151,14 +151,14 @@ const AddOrUpdateEmployeeForm = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col items-center mt-10">
+    <div className="max-w-6xl mx-auto px-6 py-6">
 
-      <div className="w-full max-w-lg">
+      <div className="w-full max-w-lg bg-white rounded-lg shadow-sm border border-gray-200 p-6">
 
         {/* Back button - sits top left of form */}
         <button onClick={listOfEmployees}
-          className="bg-cyan-900 mb-3 p-2 px-4 text-white font-bold rounded-md cursor-pointer">
-          ← List of Employees
+          className="text-sm text-gray-600 hover:text-gray-900 mb-4 transition">
+          ← Back to Employees
         </button>
 
         {/* Form */}
@@ -170,8 +170,8 @@ const AddOrUpdateEmployeeForm = () => {
             value={formData.first_name}
             placeholder="Enter First Name"
             onChange={handleChange}
-            className={`w-full border p-2 mb-4 rounded ${errors.first_name ? 'border-red-500 bg-red-50' : 'border-cyan-800'
-              }`} />
+            className={`w-full border rounded-md px-3 py-2 mb-4 text-sm outline-none transition
+${errors.first_name ? 'border-red-400 bg-red-50' : 'border-gray-200 focus:border-blue-400'}`} />
 
           {/* Error message - shown ONLY if error exists */}
           {errors.first_name && (
@@ -184,8 +184,8 @@ const AddOrUpdateEmployeeForm = () => {
             value={formData.last_name}
             placeholder="Enter Last Name"
             onChange={handleChange}
-            className={`w-full border p-2 mb-4 rounded ${errors.last_name ? 'border-red-500 bg-red-50' : 'border-cyan-800'
-              }`} />
+            className={`w-full border rounded-md px-3 py-2 mb-4 text-sm outline-none transition
+${errors.last_name ? 'border-red-400 bg-red-50' : 'border-gray-200 focus:border-blue-400'}`} />
 
           {/* Error message - shown ONLY if error exists */}
           {errors.last_name && (
@@ -198,15 +198,15 @@ const AddOrUpdateEmployeeForm = () => {
             value={formData.email_id}
             placeholder="Enter Email"
             onChange={handleChange}
-            className={`w-full border p-2 mb-4 rounded ${errors.email_id ? 'border-red-500 bg-red-50' : 'border-cyan-800'
-              }`} />
+            className={`w-full border rounded-md px-3 py-2 mb-4 text-sm outline-none transition
+${errors.email_id ? 'border-red-400 bg-red-50' : 'border-gray-200 focus:border-blue-400'}`} />
 
           {/* Error message - shown ONLY if error exists */}
           {errors.email_id && (
             <p className="text-red-500 text-sm mb-4">{errors.email_id}</p>
           )}
 
-          <button type="submit" className="w-full bg-cyan-900 p-2.5 text-white font-bold rounded-md cursor-pointer">
+          <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-md transition">
             Submit
           </button>
         </form>

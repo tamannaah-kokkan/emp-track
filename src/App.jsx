@@ -7,7 +7,7 @@ import AddOrUpdateEmployeeForm from './components/AddOrUpdateEmployeeForm'
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-slate-100">
+    <div className="min-h-screen bg-gray-100 text-gray-800">
 
     <BrowserRouter>
 
