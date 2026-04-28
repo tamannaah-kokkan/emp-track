@@ -19,6 +19,10 @@ export const ListEmployee = () =>{
         navigator('/add-employee')
     }
 
+    const updateEmployee = (id) =>{
+        navigator(`/update-employee/${id}`);
+    }
+
     return ( 
         <div className="p-6 min-h-screen"> {/* it is approx 24 px.*/}
             <h1 className="text-2xl text-blue-100 font-bold mb-4 p-6 border-4 text-center bg-cyan-700  border-b-cyan-800">List Of Employees</h1>
@@ -33,6 +37,7 @@ export const ListEmployee = () =>{
                     <th className="border  border-cyan-700 px-4 py-2 text-left">Employee FirstName</th>
                     <th className="border border-cyan-700 px-4 py-2 text-left">Employee LastName</th>
                     <th className="border  border-cyan-700 px-4 py-2 text-left">Employee Email</th>
+                    <th className="border  border-cyan-700 px-4 py-2 text-left">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,6 +47,17 @@ export const ListEmployee = () =>{
                             <td className="border  border-cyan-700 px-4 py-2">{employee.firstName}</td>
                             <td  className="border  border-cyan-700 px-4 py-2">{employee.lastName}</td>
                             <td  className="border  border-cyan-700 px-4 py-2">{employee.email}</td>
+                            <td  className="border  border-cyan-700 px-4 py-2">
+                                <div className = "flex justify-center">
+                                <button 
+                                type="submit" 
+                                className="bg-cyan-900 p-2.5 w-24 text-white font-bold rounded-md cursor-pointer hover:bg-cyan-950"
+                                onClick={() => updateEmployee(employee.id)}>
+                                    Update
+                                </button>
+                                </div>
+                            </td>
+
                         </tr>
                     ))}
                 </tbody>
