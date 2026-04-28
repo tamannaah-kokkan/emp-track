@@ -3,7 +3,7 @@ import './App.css'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 import { ListEmployee } from './components/ListEmployee'
-import AddEmployeeForm from './components/AddEmployeeForm'
+import AddOrUpdateEmployeeForm from './components/AddOrUpdateEmployeeForm'
 
 function App() {
   return (
@@ -16,8 +16,9 @@ function App() {
       <Routes>
         <Route path="/" element = {<ListEmployee/>}></Route>
         <Route path="/employees" element = {<ListEmployee/>}></Route>
-        <Route path="/add-employee" element = {<AddEmployeeForm/>}></Route>
-        <Route path="/update-employee/:id" element = {<AddEmployeeForm></AddEmployeeForm>}></Route>
+        <Route path="/add-employee" element = {<AddOrUpdateEmployeeForm/>}></Route>
+        <Route path="/update-employee/:id" element = {<AddOrUpdateEmployeeForm></AddOrUpdateEmployeeForm>}></Route>
+        {/* <Route path="/delete-employee/:id" element = {<AddOrUpdateEmployeeForm></AddOrUpdateEmployeeForm>}></Route> */}
       </Routes>
 
       <Footer></Footer>

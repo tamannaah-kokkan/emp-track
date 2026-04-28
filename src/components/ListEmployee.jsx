@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { listEmployees } from "../services/EmployeeService";
+import { deleteEmployee, listEmployees } from "../services/EmployeeService";
 // import AddEmployee from "./AddEmployee";
 import { useNavigate } from "react-router-dom";
 
@@ -9,18 +9,37 @@ export const ListEmployee = () =>{
 
     const navigator = useNavigate();
 
-    useEffect(() => {
+    //get all employees function
+     const getAllEmployees = () => {
         listEmployees().then((response) => {
             setEmployees(response.data);
         }).catch(e => console.error(e));
+    }
+
+    useEffect(() => {
+        getAllEmployees()
     },[])
 
+    //adding a new employee navigator
     const addNewEmployee = () =>{
         navigator('/add-employee')
     }
 
+    //upating emp navigator
     const updateEmployee = (id) =>{
         navigator(`/update-employee/${id}`);
+    }
+
+    //deleting the employee
+    const removeEmployee = (id) => {
+        console.log(`Employee removed successfully ${id}`);
+        deleteEmployee(id).then(()=> {
+            setEmployees(prev => 
+                prev.filter(emp => emp.id !== id)
+            );
+        }).catch((err) => {
+            console.error(err);
+        })
     }
 
     return ( 
@@ -48,12 +67,18 @@ export const ListEmployee = () =>{
                             <td  className="border  border-cyan-700 px-4 py-2">{employee.lastName}</td>
                             <td  className="border  border-cyan-700 px-4 py-2">{employee.email}</td>
                             <td  className="border  border-cyan-700 px-4 py-2">
-                                <div className = "flex justify-center">
+                                <div className = "flex justify-center gap-2">
                                 <button 
                                 type="submit" 
-                                className="bg-cyan-900 p-2.5 w-24 text-white font-bold rounded-md cursor-pointer hover:bg-cyan-950"
+                                className="bg-cyan-900 py-2 w-24 text-white font-bold rounded-md cursor-pointer hover:bg-cyan-950"
                                 onClick={() => updateEmployee(employee.id)}>
                                     Update
+                                </button>
+                                <button 
+                                type="submit" 
+                                className="bg-red-900 py-2 w-24 text-white font-bold rounded-md cursor-pointer hover:bg-red-950"
+                                onClick={() => removeEmployee(employee.id)}>
+                                    Delete
                                 </button>
                                 </div>
                             </td>
