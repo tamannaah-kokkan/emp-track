@@ -4,7 +4,7 @@ export const Header = () => {
            <header className = "fixed top-0 left-0 right-0 bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg z-50">
             <div className="max-w-6xl mx-auto px-6 py-4">
                 <div className="flex items-center">
-                    <div className="flex items-center gap-4   rounded-2xl">
+                    <div className="flex items-center gap-4 rounded-2xl">
                         <img 
                         src="/src/assets/Logo.png"
                         alt="WorkNest Logo"
