@@ -43,7 +43,7 @@ export const ListEmployee = () =>{
     }
 
     return ( 
-        <div className="max-w-6xl mx-auto px-6 py-6"> {/* it is approx 24 px.*/}
+        <div className="max-w-6xl pt-30 mx-auto px-6 py-6"> {/* it is approx 24 px.*/}
 <h1 className="text-3xl font-bold text-gray-800 mb-6">
   Employee Management
 </h1>           {/* Add employee button  */}
@@ -53,7 +53,7 @@ export const ListEmployee = () =>{
 
 <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">            <table className="w-full text-sm"> 
 
-                <thead className=" bg-gray-50 text-gray-600 uppercase text-xs">
+                <thead className=" bg-blue-50 text-blue-700 uppercase text-xs">
                 <tr>
                     <th className="px-4 py-3 text-left text-gray-600 font-medium">Employee Id</th>
                     <th className="px-4 py-3 text-left text-gray-600 font-medium">Employee FirstName</th>
@@ -73,13 +73,13 @@ export const ListEmployee = () =>{
                                 <div className = "flex justify-start gap-2">
                                 <button 
                                 type="submit" 
-                                className="px-3 py-1 text-sm rounded-md bg-blue-300 font-medium text-blue-900 hover:bg-blue-200 transition"
+                                className="px-3 py-1 text-sm rounded-md bg-blue-100 font-medium text-blue-700 hover:bg-blue-200 transition"
                                 onClick={() => updateEmployee(employee.id)}>
                                     Update
                                 </button>
                                 <button 
                                 type="submit" 
-                                className="bg-red-300 px-3 py-1 text-red-900 rounded text-sm font-medium cursor-pointer hover:bg-red-200"
+                                className="bg-red-100 px-3 py-1 text-red-700 rounded text-sm font-medium cursor-pointer hover:bg-red-200"
                                 onClick={() => removeEmployee(employee.id)}>
                                     Delete
                                 </button>
