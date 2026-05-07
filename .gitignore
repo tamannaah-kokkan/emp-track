@@ -22,3 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# IDE files
+.project
+.settings/
+.classpath
+
+# Environment files
+.env
+*.env
