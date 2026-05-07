@@ -31,3 +31,9 @@ dist-ssr
 # Environment files
 .env
 *.env
+.project
+.settings/
+node_modules/
+target/
+build/
+.env
