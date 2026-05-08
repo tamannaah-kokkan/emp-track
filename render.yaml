@@ -3,6 +3,6 @@ services:
     name: worknest-backend
     runtime: java
     rootDir: backend/employee_management
-    buildCommand: ./mvnw clean install
+    buildCommand: chmod +x mvnw && ./mvnw clean install
     startCommand: java -jar target/*.jar
     plan: free
